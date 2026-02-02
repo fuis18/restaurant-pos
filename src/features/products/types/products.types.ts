@@ -1,0 +1,49 @@
+import { z } from "zod";
+
+interface ProductsTableMeta {
+	onEdit?: (id: number) => void;
+	onDelete?: (id: number) => void;
+	onReactivate?: (id: number) => void;
+}
+
+export interface ProductsTableProps {
+	data: Product[];
+	meta?: ProductsTableMeta;
+}
+
+/* ---------- Entity ---------- */
+export interface Product {
+	id: number;
+	code: number;
+	name: string;
+	price: number;
+	state: boolean;
+}
+
+export interface ProductListItem {
+	id: number;
+	code: number;
+	name: string;
+	price: number;
+}
+
+export interface CreateProduct {
+	code: number;
+	name: string;
+	price: number;
+}
+
+export type UpdateProduct = Partial<CreateProduct> & {
+	state?: boolean;
+};
+
+/* ---------- Validation ---------- */
+export const productSchema = z.object({
+	code: z.coerce.number().positive("Código inválido"),
+	name: z.string().min(3, "Nombre inválido").max(50, "Máximo 50 caracteres"),
+	price: z.coerce.number().positive("Precio inválido"),
+});
+
+// export type FormType = z.input<typeof productSchema>;
+export type ProductFormInput = z.input<typeof productSchema>;
+export type ProductFormValues = z.output<typeof productSchema>;

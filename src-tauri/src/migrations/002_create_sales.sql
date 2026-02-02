@@ -1,0 +1,6 @@
+CREATE TABLE
+  IF NOT EXISTS sales (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    date TEXT NOT NULL DEFAULT (datetime ('now')),
+    total REAL NOT NULL
+  );

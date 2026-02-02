@@ -1,0 +1,93 @@
+"use client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import z from "zod";
+
+import { useForm } from "react-hook-form";
+
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Form } from "@/components/ui/form";
+import { userSchema } from "@/features/users/userSchema";
+
+type FormType = z.input<typeof userSchema>;
+
+const Admin = () => {
+	const form = useForm<FormType>({
+		resolver: zodResolver(userSchema),
+		defaultValues: {
+			username: "",
+			password: "",
+		},
+	});
+
+	// const onSubmit: SubmitHandler<FormType> = async (data) => {
+	// 	try {
+	// 		const parsed = userSchema.parse(data);
+
+	// 		await createUser({
+	// 			username: parsed.username,
+	// 			password: parsed.password,
+	// 		});
+
+	// 		form.reset();
+	// 	} catch (error) {
+	// 		form.setError("root", {
+	// 			type: "server",
+	// 			message:
+	// 				"No se pudo realizar el registro. " +
+	// 				(error instanceof Error ? "" : ""),
+	// 		});
+	// 	}
+	// };
+
+	return (
+		<div className="form-container">
+			<Form {...form}>
+				<form className="space-y-4">
+					{/* onSubmit={form.handleSubmit(onSubmit)} */}
+					<div>
+						<Label htmlFor="code">Nombre de Usuario</Label>
+						<Input
+							id="code"
+							type="text"
+							{...form.register("username", {
+								onChange: () => form.clearErrors("root"),
+							})}
+						/>
+						{form.formState.errors.username && (
+							<p className="text-red-500 text-sm">
+								{form.formState.errors.username.message}
+							</p>
+						)}
+					</div>
+					<div>
+						<Label htmlFor="password">Contraseña</Label>
+						<Input
+							id="password"
+							type="password"
+							{...form.register("password", {
+								onChange: () => form.clearErrors("root"),
+							})}
+						/>
+						{form.formState.errors.password && (
+							<p className="text-red-500 text-sm">
+								{form.formState.errors.password.message}
+							</p>
+						)}
+					</div>
+					<div>
+						{form.formState.errors.root && (
+							<p className="text-red-600 text-sm">
+								{form.formState.errors.root.message}
+							</p>
+						)}
+						<Button type="submit">Sign In</Button>
+					</div>
+				</form>
+			</Form>
+		</div>
+	);
+};
+
+export default Admin;
