@@ -51,24 +51,6 @@ export default defineConfig({
 
 ```
 
-**./tsconfig.json**
-
-```json
-{
-	"files": [],
-	"references": [
-		{ "path": "./tsconfig.app.json" },
-		{ "path": "./tsconfig.node.json" }
-	],
-	"compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
-}
-```
-
 **./src/tsconfig.app.json**
 
 ```json
@@ -126,7 +108,6 @@ cargo add tauri-plugin-sql --features sqlite
 ```sh
 bun tauri dev
 ```
-
 
 ## Por hacer
 1. Import Excel
