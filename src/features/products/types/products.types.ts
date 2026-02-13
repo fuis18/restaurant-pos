@@ -17,7 +17,7 @@ export interface Product {
 	code: number;
 	name: string;
 	price: number;
-	state: boolean;
+	state: boolean | number;
 }
 
 export interface ProductListItem {

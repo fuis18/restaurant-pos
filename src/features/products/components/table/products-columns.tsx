@@ -20,7 +20,7 @@ export const columns: ColumnDef<Product>[] = [
 		),
 	},
 	{
-		accessorKey: "active",
+		accessorKey: "state",
 		header: "Estado",
 		cell: StateCell,
 	},

@@ -74,11 +74,6 @@ const ImportDialog = ({
 		});
 	};
 
-	// code,name,price
-	// 101,Hamburguesa,5.99
-	// 102,Pizza,8.50
-	// 103,Refresco,1.50
-
 	return (
 		<Dialog open={open} onOpenChange={setOpen}>
 			<DialogTrigger asChild>{children}</DialogTrigger>
