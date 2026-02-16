@@ -13,9 +13,9 @@ const Header = () => {
 			<Button asChild>
 				<Link to="/sales">Ventas</Link>
 			</Button>
-			{/* <Button>
+			<Button>
 				<Link to="/login">Login</Link>
-			</Button> */}
+			</Button>
 		</div>
 	);
 };

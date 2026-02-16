@@ -1,7 +1,5 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import z from "zod";
-
 import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
@@ -10,8 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Form } from "@/components/ui/form";
 import { Link } from "react-router-dom";
 import { userSchema } from "@/features/users/userSchema";
-
-type FormType = z.input<typeof userSchema>;
+import type { FormType } from "@/features/users/userSchema";
 
 const Login = () => {
 	const form = useForm<FormType>({
@@ -48,9 +45,9 @@ const Login = () => {
 				<form className="space-y-4">
 					{/* onSubmit={form.handleSubmit(onSubmit)} */}
 					<div>
-						<Label htmlFor="code">Nombre de Usuario</Label>
+						<Label htmlFor="username">Nombre de Usuario</Label>
 						<Input
-							id="code"
+							id="username"
 							type="text"
 							{...form.register("username", {
 								onChange: () => form.clearErrors("root"),
@@ -87,7 +84,7 @@ const Login = () => {
 					</div>
 				</form>
 			</Form>
-			<Link to="/login/admin" className="text-blue-500 underline text-sm">
+			<Link to="/login/signin" className="text-blue-500 underline text-sm">
 				Sign In
 			</Link>
 		</div>

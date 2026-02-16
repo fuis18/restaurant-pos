@@ -7,8 +7,9 @@ const Registry = lazy(() => import("@/pages/Registry"));
 const Products = lazy(() => import("@/pages/Products"));
 const Sales = lazy(() => import("@/pages/Sales"));
 
-// import Login from "@/pages/login/Login";
-// import Admin from "@/pages/login/Admin";
+import Login from "@/pages/login/Login";
+import Token from "@/pages/login/Token";
+import SignIn from "@/pages/login/SignIn";
 
 function Router() {
 	return (
@@ -26,10 +27,11 @@ function Router() {
 							<Route index element={<Sales />} />
 						</Route>
 
-						{/* <Route path="/login">
+						<Route path="/login">
 							<Route index element={<Login />} />
-							<Route path="admin" element={<Admin />} />
-						</Route> */}
+							<Route path="token" element={<Token />} />
+							<Route path="signin" element={<SignIn />} />
+						</Route>
 					</Route>
 				</Routes>
 			</Suspense>
