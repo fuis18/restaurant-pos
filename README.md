@@ -48,7 +48,6 @@ export default defineConfig({
 	},
 	base: "/",
 });
-
 ```
 
 **./src/tsconfig.app.json**
@@ -111,10 +110,9 @@ bun tauri dev
 
 ## Por hacer
 
-1. add dynamic pagination
-2. Filter Sales Hour
-3. login
-4. Graphics
+1. Filter Sales Hour
+2. login
+3. Graphics
 
 como usar
 bun tauri add store
