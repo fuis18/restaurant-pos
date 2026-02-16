@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { userSchema } from "@/features/users/userSchema";
 
-const SignIn = () => {
+const SignUp = () => {
 	const form = useForm<FormType>({
 		resolver: zodResolver(userSchema),
 		defaultValues: {
@@ -46,7 +46,7 @@ const SignIn = () => {
 								{form.formState.errors.root.message}
 							</p>
 						)}
-						<Button type="submit">Login</Button>
+						<Button type="submit">Sign Up</Button>
 					</div>
 				</form>
 			</Form>
@@ -54,4 +54,4 @@ const SignIn = () => {
 	);
 };
 
-export default SignIn;
+export default SignUp;
