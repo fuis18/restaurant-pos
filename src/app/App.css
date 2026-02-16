@@ -44,3 +44,12 @@ th {
 	display: flex;
 	justify-content: center;
 }
+
+.form-container {
+	width: 300px;
+	margin: 50px auto;
+}
+
+.form-container label {
+	margin-bottom: 0.5rem;
+}

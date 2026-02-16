@@ -7,8 +7,8 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Form } from "@/components/ui/form";
 import { Link } from "react-router-dom";
-import { userSchema } from "@/features/users/userSchema";
-import type { FormType } from "@/features/users/userSchema";
+import { userSchema } from "@/features/users/types/userSchema";
+import type { FormType } from "@/features/users/types/userSchema";
 
 const Login = () => {
 	const form = useForm<FormType>({
@@ -85,7 +85,7 @@ const Login = () => {
 				</form>
 			</Form>
 			<Link to="/login/signin" className="text-blue-500 underline text-sm">
-				Sign In
+				Sign Up
 			</Link>
 		</div>
 	);
