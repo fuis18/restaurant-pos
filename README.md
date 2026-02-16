@@ -1,13 +1,11 @@
 # Restaurant App
 
-This is a restaurant app that allows you to manage your restaurant's sales and inventory.
-
+**This is a restaurant app that allows you to manage your restaurant's sales and inventory.**
 
 <img src="./assets/img-1.png" alt="img-1">
 <img src="./assets/img-2.png" alt="img-2">
 <img src="./assets/img-3.png" alt="img-3">
 <img src="./assets/img-4.png" alt="img-4">
-
 
 ## Setup
 
