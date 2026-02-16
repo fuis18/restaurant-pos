@@ -1,6 +1,15 @@
 # Restaurant App
 
-## Frontend
+This is a restaurant app that allows you to manage your restaurant's sales and inventory.
+
+<img src="./assets/img-1.png" alt="img-1">
+<img src="./assets/img-2.png" alt="img-2">
+<img src="./assets/img-3.png" alt="img-3">
+<img src="./assets/img-4.png" alt="img-4">
+<img src="./assets/img-5.png" alt="img-5">
+<img src="./assets/img-6.png" alt="img-6">
+
+## Setup
 
 ```sh
 bun create vite restaurant-pos
@@ -110,12 +119,10 @@ bun tauri dev
 
 ## Por hacer
 
+2. login avatar and options
 1. Filter Sales Hour
-2. login
-3. Graphics
+3. credits
+4. Graphics
+5. visual table scroll
 
-como usar
-bun tauri add store
-para guardar un token de authenticación
-https://v2.tauri.app/plugin/store/
-/login/
+<!-- bun tauri add store -->
