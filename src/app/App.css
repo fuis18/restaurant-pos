@@ -81,10 +81,17 @@ th {
 	gap: 0.5rem;
 }
 
-.form-container div {
+.form-content div {
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
+}
+
+.form-source {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
 }
 
 .form-container span {

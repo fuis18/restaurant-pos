@@ -89,7 +89,7 @@ const Login = () => {
 								{form.formState.errors.root.message}
 							</p>
 						)}
-						<span>
+						<span className="mt-2">
 							<Button type="submit">Login</Button>
 							<Button variant="outline" type="button">
 								<Link
@@ -103,7 +103,7 @@ const Login = () => {
 					</div>
 				</form>
 			</Form>
-			<div className="mt-4 text-center text-xs text-muted-foreground">
+			<div className="form-source mt-4 text-xs text-muted-foreground">
 				{CONFIG.GITHUB_REPO_URL ? (
 					<a
 						href={CONFIG.GITHUB_REPO_URL}
@@ -115,7 +115,7 @@ const Login = () => {
 					</a>
 				) : null}
 				{CONFIG.GITHUB_REPO_URL && CONFIG.GITHUB_PROFILE_URL ? (
-					<span> · </span>
+					<span> • </span>
 				) : null}
 				{CONFIG.GITHUB_PROFILE_URL ? (
 					<a
