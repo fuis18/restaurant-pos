@@ -6,9 +6,14 @@ import type { FormType } from "@/features/users/types/userSchema";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { userSchema } from "@/features/users/types/userSchema";
-import { userService } from "@/features/users/service/users.service";
+import { createUserService } from "@/features/users/service/users.service";
+import { CONFIG } from "@/constants/config";
 
 const SignUp = () => {
+	const userService = createUserService({
+		tokenValidator: (token) => token === CONFIG.TOKEN,
+	});
+
 	const form = useForm<FormType>({
 		resolver: zodResolver(userSchema),
 		defaultValues: {

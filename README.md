@@ -1,13 +1,102 @@
 # Restaurant App POS
 
-**This is a restaurant app that allows you to manage your restaurant's sales and inventory.**
+![Tauri](https://img.shields.io/badge/Tauri-2.x-blue)
+![Bun](https://img.shields.io/badge/Bun-runtime-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6)
+
+[Español](./README.es.md)
+
+**Desktop POS app** for a restaurant: inventory/registry + sales tracking, built with **React + Vite** and packaged as a **Tauri** app (SQLite).
+
+## Screenshots
 
 <img src="./assets/img-1.png" alt="img-1">
 <img src="./assets/img-2.png" alt="img-2">
 <img src="./assets/img-3.png" alt="img-3">
 <img src="./assets/img-4.png" alt="img-4">
 
-## Setup
+## Features
+
+- **Registry / inventory** management
+- **Products** CRUD + import/export (CSV/XLSX)
+- **Sales** tracking and filtering
+- **Local database** via SQLite (Tauri SQL plugin)
+
+## Tech Stack
+
+- **Frontend**
+	- React + TypeScript
+	- Vite
+	- Tailwind CSS
+	- shadcn/ui (Radix)
+- **Desktop**
+	- Tauri (Rust)
+	- SQLite via `tauri-plugin-sql`
+
+## Project Structure
+
+```text
+src/
+	app/            App shell + router entry
+	components/     Shared components (Header, ui/*)
+	constants/      App-level configuration (e.g. GitHub links)
+	database/       DB helpers / initialization
+	features/       Domain modules (products, registry, sales, users)
+	pages/          Route-level pages (Products, Registry, Sales, login/*)
+	store/          Global stores (userStore)
+src-tauri/        Tauri (Rust) backend + app packaging
+assets/           Screenshots
+```
+
+## Requirements
+
+- Bun
+- Rust toolchain (for Tauri builds)
+- OS supported by Tauri (Windows/macOS/Linux)
+
+## Quick Start (Desktop)
+
+```sh
+bun install
+bun tauri dev
+```
+
+## Scripts
+
+```sh
+# web dev
+bun dev
+
+# typecheck + web build
+bun run build
+
+# desktop dev
+bun tauri dev
+```
+
+## Database (SQLite)
+
+This app uses SQLite through Tauri.
+
+If you need to add the SQL plugin (already included in this repo):
+
+```sh
+cd ./src-tauri/
+cargo add tauri-plugin-sql --features sqlite
+```
+
+## Credits / Source
+
+Inside the app, the Login screen shows links to:
+
+- Repo
+- GitHub profile
+
+You can edit them in `src/constants/config.ts`.
+
+## Setup notes (how this project was created)
+
+The following is a reference of the steps/packages used when scaffolding the project.
 
 ```sh
 bun create vite restaurant-pos
@@ -21,65 +110,9 @@ bun add @tanstack/react-form -E
 bun add react-hook-form zod -E
 bun add react-router-dom -E
 bun add @tauri-apps/plugin-sql -E
-❯ bun add papaparse @types/papaparse -E
+bun add papaparse @types/papaparse -E
 ```
 
-**./package.json**
-
-```json
-{
-  "eslintConfig": {
-		"extends": "standard"
-	}
-}
-```
-
-**./vite.config.ts**
-
-```ts
-import react from "@vitejs/plugin-react";
-import path from "path";
-import tailwindcss from "@tailwindcss/vite";
-import { defineConfig } from "vite";
-
-export default defineConfig({
-	plugins: [react(), tailwindcss()],
-	resolve: {
-		alias: {
-			"@": path.resolve(__dirname, "./src"),
-		},
-	},
-	server: {
-		host: true,
-		port: 5173,
-	},
-	base: "/",
-});
-```
-
-**./src/tsconfig.app.json**
-
-```json
-{
-  "compilerOptions": {
-    // ...
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    }
-    // ...
-  }
-}
-```
-
-**./src/index.css**
-```css
-@import "tailwindcss";
-```
-
-**shell**
 ```sh
 bun add -D @types/node
 
@@ -91,33 +124,9 @@ bunx --bun shadcn@latest add popover dropdown-menu
 bunx --bun shadcn@latest add combobox calendar
 ```
 
-## As a App
-
 ```sh
 bun add -D @tauri-apps/cli@latest
 bun add @tauri-apps/api
 
 bun tauri init
 ```
-### Tauri Dependencies
-
-```sh
-# bun tauri add store
-
-cd ./src-tauri/
-
-cargo add tauri-plugin-sql --features sqlite
-```
-
-## Start
-
-```sh
-bun tauri dev
-```
-
-## Por hacer
-
-1. random token & isolation
-2. credits
-
-<!-- bun tauri add store -->

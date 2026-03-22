@@ -10,10 +10,15 @@ import { Link } from "react-router-dom";
 import { userSchema } from "@/features/users/types/userSchema";
 import type { FormType } from "@/features/users/types/userSchema";
 import type { SubmitHandler } from "react-hook-form";
-import { userService } from "@/features/users/service/users.service";
+import { createUserService } from "@/features/users/service/users.service";
 import { useUserStore } from "@/store/userStore";
+import { CONFIG } from "@/constants/config";
 
 const Login = () => {
+	const userService = createUserService({
+		tokenValidator: (token) => token === CONFIG.TOKEN,
+	});
+
 	const form = useForm<FormType>({
 		resolver: zodResolver(userSchema),
 		defaultValues: {
@@ -98,6 +103,31 @@ const Login = () => {
 					</div>
 				</form>
 			</Form>
+			<div className="mt-4 text-center text-xs text-muted-foreground">
+				{CONFIG.GITHUB_REPO_URL ? (
+					<a
+						href={CONFIG.GITHUB_REPO_URL}
+						target="_blank"
+						rel="noreferrer"
+						className="underline"
+					>
+						Source
+					</a>
+				) : null}
+				{CONFIG.GITHUB_REPO_URL && CONFIG.GITHUB_PROFILE_URL ? (
+					<span> · </span>
+				) : null}
+				{CONFIG.GITHUB_PROFILE_URL ? (
+					<a
+						href={CONFIG.GITHUB_PROFILE_URL}
+						target="_blank"
+						rel="noreferrer"
+						className="underline"
+					>
+						GitHub
+					</a>
+				) : null}
+			</div>
 		</div>
 	);
 };

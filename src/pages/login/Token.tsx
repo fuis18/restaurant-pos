@@ -4,8 +4,9 @@ import { useForm } from "react-hook-form";
 import { userToken } from "@/features/users/types/userSchema";
 import type { TokenType } from "@/features/users/types/userSchema";
 import type { SubmitHandler } from "react-hook-form";
-import { userService } from "@/features/users/service/users.service";
+import { createUserService } from "@/features/users/service/users.service";
 import { useNavigate } from "react-router";
+import { CONFIG } from "@/constants/config";
 
 import {
 	Form,
@@ -24,6 +25,9 @@ import { Button } from "@/components/ui/button";
 
 const Token = () => {
 	const navigate = useNavigate();
+	const userService = createUserService({
+		tokenValidator: (token) => token === CONFIG.TOKEN,
+	});
 
 	const form = useForm<TokenType>({
 		resolver: zodResolver(userToken),

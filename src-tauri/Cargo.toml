@@ -1,10 +1,10 @@
 [package]
 name = "App"
 version = "1.1.0"
-description = "A Tauri App"
-authors = ["Fuis18"]
+description = "An APP for a restaurant type POS"
+authors = ["fuis18"]
 license = "MIT"
-repository = ""
+repository = "https://github.com/fuis18/restaurant-pos"
 edition = "2021"
 rust-version = "1.77.2"
 
